@@ -1,22 +1,25 @@
-from typing import Union
+
 from fastapi import FastAPI
-from pydantic import BaseModel
+from dotenv import load_dotenv
+from contextlib import asynccontextmanager
+from db.database import Base, engine
+import os
 
-app = FastAPI()
+load_dotenv()  # Carrega as variáveis do .env
 
-class ItemDTO(BaseModel):
-    name: str
-    price: float
-    isOffer: Union[bool, None] = None
+# Para criar e dar drop no banco toda vez que iniciar o backend
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    if os.getenv("ENV") == "dev":
+        print("🧪 [DEV MODE] Resetando banco de dados...")
+        Base.metadata.drop_all(bind=engine)
+        Base.metadata.create_all(bind=engine)
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
 
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: ItemDTO):
-    return {"item_id": item_id, "itemDTO Name": item.name}
