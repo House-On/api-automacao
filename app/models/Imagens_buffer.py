@@ -14,7 +14,7 @@ class Imagens(Base):
 
     imagens_id = Column(Integer, primary_key=True, index=True)
     dados = Column(LargeBinary, nullable=False)
-    status = Column(String, default="pendente")
+    status = Column(String(20), default="pendente")
     upload_timestamp = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
     historico_id = Column(Integer, ForeignKey("historicos.historico_id"))
