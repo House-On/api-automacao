@@ -2,7 +2,7 @@
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime, timezone
-from ..db.database import Base
+from app.db.database import Base
 
 '''
     Classe que recebe as análises geradas pela IA sobre a empresa.
