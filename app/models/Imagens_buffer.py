@@ -4,6 +4,11 @@ from sqlalchemy.orm import relationship
 from datetime import datetime, timezone
 from ..db.database import Base
 
+'''
+    Classe que recebe, diretamente das gravações da empresa, as imagens da câmera.
+    Esses dados são convertidos em LargeBinaries para que a IA crie análises curtas sobre.
+'''
+
 class Imagens(Base):
     __tablename__ = "imagens_buffer"
 

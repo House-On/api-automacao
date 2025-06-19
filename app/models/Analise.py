@@ -4,6 +4,11 @@ from sqlalchemy.orm import relationship
 from datetime import datetime, timezone
 from ..db.database import Base
 
+'''
+    Classe que recebe as análises geradas pela IA sobre a empresa.
+    É responsável por amenizar o uso excessivo de dados de imagens com LargeBinary
+'''
+
 class Analise(Base):
     __tablename__ = "analises"
 
