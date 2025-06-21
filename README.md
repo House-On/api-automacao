@@ -43,7 +43,7 @@ cd projetos-git
 <p>Agora clone o projeto com o git, se estiver no windows use o git bash: </p>
 
 ```bash
-git clone https://github.com/MarcosHenriqueFr/api-automacao
+git clone https://github.com/House-On/api-automacao
 cd api-automacao
 ```
 
