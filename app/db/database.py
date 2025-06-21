@@ -1,8 +1,12 @@
 
+from os import makedirs
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-DATABASE_URL = f"sqlite:///./app/data/banco.db"
+caminho_banco = "./app/data"
+makedirs(caminho_banco, exist_ok=True)
+
+DATABASE_URL = f"sqlite:///{caminho_banco}/banco.db"
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
