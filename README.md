@@ -143,9 +143,6 @@ fastapi run app/main.py
                 </sub>
             </a>
         </td>
-    </tr>
-
-    <tr>
         <td align="center">
             <a href="https://github.com/LuizGustavo-029">
                 <img src="https://avatars.githubusercontent.com/u/216095318?v=4" width="100px" alt="foto perfil LuizGustavo-029"><br>
